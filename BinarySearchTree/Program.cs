@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter use case number (1 or 2):");
+            Console.WriteLine("Enter use case number (1, 2, or 3):");
             int useCase = Convert.ToInt32(Console.ReadLine());
 
             switch (useCase)
@@ -14,6 +14,9 @@
                     break;
                 case 2:
                     ExecuteUseCase2();
+                    break;
+                case 3:
+                    ExecuteUseCase3();
                     break;
                 default:
                     Console.WriteLine("Invalid use case number");
@@ -31,7 +34,7 @@
             Console.WriteLine("BST created with elements 56, 30, and 70");
         }
 
-        static void ExecuteUseCase2()
+        static BinarySearchTree<int> ExecuteUseCase2()
         {
             BinarySearchTree<int> bst = new BinarySearchTree<int>();
             bst.Add(56);
@@ -50,6 +53,20 @@
 
             Console.WriteLine("BST created with elements 56, 30, 70, 22, 40, 60, 95, 11, 65, 3, 16, 63, and 67");
             Console.WriteLine("Number of nodes in BST: " + bst.Size());
+
+            return bst;
+        }
+
+        static void ExecuteUseCase3()
+        {
+            BinarySearchTree<int> bst = ExecuteUseCase2();
+
+            int keyToSearch = 63;
+            bool found = bst.Search(keyToSearch);
+            if (found)
+                Console.WriteLine("Key " + keyToSearch + " found in BST");
+            else
+                Console.WriteLine("Key " + keyToSearch + " not found in BST");
         }
     }
 }

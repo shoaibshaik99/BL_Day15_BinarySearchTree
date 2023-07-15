@@ -42,5 +42,23 @@
             else
                 return (SizeRecursively(current.Left) + 1 + SizeRecursively(current.Right));
         }
+
+        public bool Search(T key)
+        {
+            return SearchRecursively(Root, key);
+        }
+
+        private bool SearchRecursively(Node<T> current, T key)
+        {
+            if (current == null)
+                return false;
+
+            if (key.CompareTo(current.Key) == 0)
+                return true;
+            else if (key.CompareTo(current.Key) < 0)
+                return SearchRecursively(current.Left, key);
+            else
+                return SearchRecursively(current.Right, key);
+        }
     }
 }
