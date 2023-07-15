@@ -29,5 +29,18 @@
 
             return current;
         }
+
+        public int Size()
+        {
+            return SizeRecursively(Root);
+        }
+
+        private int SizeRecursively(Node<T> current)
+        {
+            if (current == null)
+                return 0;
+            else
+                return (SizeRecursively(current.Left) + 1 + SizeRecursively(current.Right));
+        }
     }
 }
